@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Notifications\NotifyUser;
-use App\Mail\laravelMail;
+use App\Jobs\newJobLaravel;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +21,13 @@ Route::get('/', function () {
 });
 
 Route::get('/mail', function () {
-    /*
-
+    
     $user        = new stdClass();
     $user->name  = "fulano!";
     $user->email = "matheus@celerus.com";
 
-    Mail::send(new laravelMail($user));
+    newJobLaravel::dispatch($user)->delay(now()->addSeconds(5));
 
     return response()->json('enviado!');
 
-    */
-
-    return 'done';
 });
